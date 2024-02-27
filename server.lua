@@ -6,7 +6,7 @@ if Config.ESX == 'old' then
 	ESX = exports["es_extended"]:getSharedObject()
 end
 
---Give Money / Geld Geben--
+--Give Money--
 
 RegisterCommand("givemoney", function(source, args, rawCommand)
 	xAdmin = ESX.GetPlayerFromId(args[1])
@@ -35,8 +35,13 @@ RegisterCommand("givemoney", function(source, args, rawCommand)
 
 	else if xGroup == xGroupAdmin then
 
+		if Config.OxInventory == false then
 			xPlayer.addMoney(args[2])
-			TriggerClientEvent("esx:showNotification", source, _U('givemoney_id') ..args[1].." " ..args[2].. _U('givemoney_give'))
+			TriggerClientEvent("esx:showNotification", source, _U('givemoney_id') ..args[1].." " ..args[2].. Config.Currency)
+		else
+			xPlayer.addInventoryItem(Config.OxInventoryItem, args[2])
+			TriggerClientEvent("esx:showNotification", source, _U('givemoney_id') ..args[1].." " ..args[2].. Config.Currency)
+		end
 	end
 	end
 end
@@ -49,7 +54,7 @@ end
 
 end)
 
---Remove Money / Geld Entfernen--
+--Remove Money--
 
 RegisterCommand("removemoney", function(source, args, rawCommand)
 	xAdmin = ESX.GetPlayerFromId(args[1])
@@ -78,8 +83,13 @@ RegisterCommand("removemoney", function(source, args, rawCommand)
 
 	else if xGroup == xGroupAdmin then
 
+		if Config.OxInventory == false then
 			xPlayer.removeMoney(args[2])
-			TriggerClientEvent("esx:showNotification", source, _U('removemoney_id') ..args[1].." " ..args[2].. _U('removemoney_remove'))
+			TriggerClientEvent("esx:showNotification", source, _U('removemoney_id') ..args[1].." " ..args[2].. Config.Currency)
+		else
+			xPlayer.removeInventoryItem(Config.OxInventoryItem, args[2])
+			TriggerClientEvent("esx:showNotification", source, _U('givemoney_id') ..args[1].." " ..args[2].. Config.Currency)
+		end
 	end
 	end
 end

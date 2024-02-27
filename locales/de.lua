@@ -7,12 +7,10 @@ Locales['de'] = {
 
 		-- Give Money
 
-	['givemoney_id']				= '~g~Du hast dem Spieler mit der ID: ',
-	['givemoney_give']				= '$ gegeben',
+	['givemoney_id']				= '~g~Du hast gegeben dem Spieler mit der ID: ',
 
 
 		-- Remove Money
 
-	['removemoney_id']				= '~g~Du hast dem Spieler mit der ID: ',
-	['removemoney_remove']			= '$ entfernt',
+	['removemoney_id']				= '~g~Du hast entfernt dem Spieler mit der ID: ',
 }
